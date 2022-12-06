@@ -1,0 +1,41 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+cars=pd.read_csv("C:/Users/Admin/Downloads/archive (1)/Cars93.csv")
+cars
+
+#BOXPlot
+fig=plt.figure()
+plt.boxplot(cars["Price"])
+plt.title("Price range")
+plt.xlabel("price")
+
+#five number summary
+print(np.min(cars.Price))
+print(np.max(cars.Price))
+print(np.std(cars.Price))
+print(np.mean(cars.Price))
+print(np.median(cars.Price))
+
+#Histogram
+mode1=cars["MPG.city"].mode()
+print("highest frequency: ",mode1)
+fig=plt.figure()
+plt.hist(cars['MPG.city'])
+plt.title("Frequency distribution")
+plt.xlabel("mpg.city")
+
+#Scatter
+ax=cars.plot(['Horsepower'],['MPG.city'],kind="scatter",color="black",marker="*",figsize=(10,7))
+fig=plt.figure()
+ax.set_title("Horsepower vs MPG.city")
+ax.set_xlabel("Horsepower")
+ax.set_ylabel("Mpg city")
+
+#Line graph
+fig=plt.figure()
+plt.plot(cars["EngineSize"])
+plt.plot(cars["Horsepower"])
+plt.title('variations in engine against horepower ')
+plt.xlabel('EngineSize')
+plt.ylabel("Horsepower")
